@@ -16,6 +16,8 @@
 		3BA4CC0F1F919B7600705CD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BA4CC0D1F919B7600705CD7 /* LaunchScreen.storyboard */; };
 		3BA4CC1A1F919B7600705CD7 /* SocialARTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4CC191F919B7600705CD7 /* SocialARTests.swift */; };
 		3BA4CC251F919B7600705CD7 /* SocialARUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4CC241F919B7600705CD7 /* SocialARUITests.swift */; };
+		3BA4CC361F91AAD700705CD7 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4CC351F91AAD700705CD7 /* Math.swift */; };
+		3BA4CC381F91AD8D00705CD7 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4CC371F91AD8D00705CD7 /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		3BA4CC241F919B7600705CD7 /* SocialARUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialARUITests.swift; sourceTree = "<group>"; };
 		3BA4CC261F919B7600705CD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BA4CC321F919CAE00705CD7 /* SocialAR.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SocialAR.entitlements; sourceTree = "<group>"; };
+		3BA4CC351F91AAD700705CD7 /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
+		3BA4CC371F91AD8D00705CD7 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,8 @@
 				3BA4CC021F919B7600705CD7 /* Scene.sks */,
 				3BA4CC041F919B7600705CD7 /* Scene.swift */,
 				3BA4CC061F919B7600705CD7 /* ViewController.swift */,
+				3BA4CC351F91AAD700705CD7 /* Math.swift */,
+				3BA4CC371F91AD8D00705CD7 /* API.swift */,
 				3BA4CC081F919B7600705CD7 /* Main.storyboard */,
 				3BA4CC0B1F919B7600705CD7 /* Assets.xcassets */,
 				3BA4CC0D1F919B7600705CD7 /* LaunchScreen.storyboard */,
@@ -276,6 +282,8 @@
 				3BA4CC071F919B7600705CD7 /* ViewController.swift in Sources */,
 				3BA4CC051F919B7600705CD7 /* Scene.swift in Sources */,
 				3BA4CC011F919B7600705CD7 /* AppDelegate.swift in Sources */,
+				3BA4CC361F91AAD700705CD7 /* Math.swift in Sources */,
+				3BA4CC381F91AD8D00705CD7 /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
