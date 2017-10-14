@@ -9,6 +9,7 @@
 import CoreLocation
 import ARKit
 import SpriteKit
+import GLKit
 
 extension ViewController
 {
@@ -22,11 +23,13 @@ extension ViewController
         }
 
         // Create a session configuration
+        sceneView.session.pause()
+        
         let configuration = ARWorldTrackingConfiguration()
-        configuration.worldAlignment = .gravity
+        configuration.worldAlignment = .gravityAndHeading
         
         // Run the view's session
-        sceneView.session.run(configuration)
+        sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         
         getNearbyPosts(currentLocation: locations[0]) { (json) in
             
@@ -35,12 +38,15 @@ extension ViewController
             {
                 if let post = item as? [Any]
                 {
-                    let anchorPos = distanceAndBearing(point1: locations[0], point2: CLLocation(latitude: post[0] as! CLLocationDegrees, longitude: post[1] as! CLLocationDegrees))
-                    var translation = matrix_identity_float4x4
-                    translation.columns.3.y = 1.0 * (Float(arc4random_uniform(5)) - 2)
-                    translation.columns.3.z = -1.0 * Float(anchorPos.distance)
+                    let anchorPos = distanceAndBearing(point1: locations[0], point2: CLLocation(latitude: Double(post[0] as! String)!, longitude: Double(post[1] as! String)!))
                     
-                    let transform = simd_mul((self.sceneView.session.currentFrame?.camera.transform)!, translation)
+                    var translation = matrix_identity_float4x4
+                    translation.columns.3.z = Float(anchorPos.distance) * -1
+                    
+                    let rotation = GLKMatrix4RotateY(GLKMatrix4Identity, Float(anchorPos.bearing) * 1)
+                    let sRotation = matrix_float4x4.init(float4.init(rotation.m00, rotation.m10, rotation.m20, rotation.m30), float4.init(rotation.m01, rotation.m11, rotation.m21, rotation.m31), float4.init(rotation.m02, rotation.m12, rotation.m22, rotation.m32), float4.init(rotation.m03, rotation.m13, rotation.m23, rotation.m33))
+                    
+                    let transform = simd_mul(sRotation, translation)
                     
                     let decodedData = Data(base64Encoded: post[2] as! String, options: Data.Base64DecodingOptions.ignoreUnknownCharacters)
 

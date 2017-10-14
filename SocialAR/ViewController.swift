@@ -22,12 +22,14 @@ class ViewController: UIViewController, ARSKViewDelegate, CLLocationManagerDeleg
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var sendButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         titleLabel.alpha = 0.0
         textView.alpha = 0.0
+        sendButton.alpha = 0.0
         textView.layer.cornerRadius = 10.0
         textView.layer.masksToBounds = true
         
@@ -66,7 +68,7 @@ class ViewController: UIViewController, ARSKViewDelegate, CLLocationManagerDeleg
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
-        configuration.worldAlignment = .gravity
+        configuration.worldAlignment = .gravityAndHeading
         
         // Run the view's session
         sceneView.session.run(configuration)
@@ -157,6 +159,7 @@ class ViewController: UIViewController, ARSKViewDelegate, CLLocationManagerDeleg
     @IBAction func updateStatus(_ sender: Any)
     {
         textView.alpha = 1.0
+        sendButton.alpha = 1.0
         scaleUp(view: textView, withDuration: 0.25)
         textView.becomeFirstResponder()
     }
@@ -165,6 +168,9 @@ class ViewController: UIViewController, ARSKViewDelegate, CLLocationManagerDeleg
     {
         postContent = textView.text
         locationManager.requestLocation()
+        textView.text = ""
+        sendButton.alpha = 0.0
+        textView.alpha = 0.0
     }
 }
 
