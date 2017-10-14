@@ -11,9 +11,13 @@ import SpriteKit
 import ARKit
 import CoreLocation
 
-class ViewController: UIViewController, ARSKViewDelegate {
+class ViewController: UIViewController, ARSKViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet var sceneView: ARSKView!
+    lazy var locationManager = CLLocationManager()
+    var currentLocation: CLLocation?
+    var indicatorView: UIActivityIndicatorView?
+    var indicatorBG: UIView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +34,10 @@ class ViewController: UIViewController, ARSKViewDelegate {
             sceneView.presentScene(scene)
         }
         
-        let loc = CLLocation(latitude: 12.04, longitude: 12.943)
-        apiPost(currentLocation: loc)
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 500
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,10 +67,18 @@ class ViewController: UIViewController, ARSKViewDelegate {
     
     func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
         // Create and configure a node for the anchor added to the view's session.
-        let labelNode = SKLabelNode(text: "👾")
-        labelNode.horizontalAlignmentMode = .center
-        labelNode.verticalAlignmentMode = .center
-        return labelNode;
+        if let postAnchor = anchor as? PostAnchor
+        {
+            let labelNode = SKLabelNode(text: postAnchor.content)
+            labelNode.numberOfLines = 0
+            labelNode.preferredMaxLayoutWidth = 250
+            labelNode.lineBreakMode = .byWordWrapping
+            labelNode.horizontalAlignmentMode = .center
+            labelNode.verticalAlignmentMode = .center
+            return labelNode
+        }
+        
+        return SKLabelNode(text: "Hello World!")
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
@@ -80,5 +94,28 @@ class ViewController: UIViewController, ARSKViewDelegate {
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
+    }
+    
+    @IBAction func showPosts(_ sender: Any)
+    {
+        locationManager.requestLocation()
+        
+        indicatorBG = UIView(frame: CGRect(origin: view.center, size: CGSize(width: 50, height: 50)))
+        
+        if let bg = indicatorBG
+        {
+            bg.backgroundColor = .black
+            bg.layer.cornerRadius = 10.0
+            bg.layer.masksToBounds = true
+            view.addSubview(bg)
+        }
+        
+        indicatorView = UIActivityIndicatorView(frame: CGRect(origin: view.center, size: CGSize(width: 50, height: 50)))
+        
+        if let inView = indicatorView
+        {
+            view.addSubview(inView)
+            inView.startAnimating()
+        }
     }
 }

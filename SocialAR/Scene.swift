@@ -34,7 +34,7 @@ class Scene: SKScene {
             
             // Add a new anchor to the session
             let anchor = ARAnchor(transform: transform)
-            sceneView.session.add(anchor: anchor)
+            //sceneView.session.add(anchor: anchor)
         }
     }
 }
