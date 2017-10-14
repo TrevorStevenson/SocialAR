@@ -19,8 +19,24 @@ class ViewController: UIViewController, ARSKViewDelegate, CLLocationManagerDeleg
     var indicatorView: UIActivityIndicatorView?
     var indicatorBG: UIView?
     
+    @IBOutlet weak var titleLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        titleLabel.alpha = 0.0
+        
+        UIView.animate(withDuration: 5.0, animations: {
+            
+            self.titleLabel.alpha = 1.0
+            
+        }) { done in
+            
+            UIView.animate(withDuration: 5.0, animations: {
+                
+                self.titleLabel.alpha = 0.0
+            })
+        }
         
         // Set the view's delegate
         sceneView.delegate = self
@@ -71,14 +87,19 @@ class ViewController: UIViewController, ARSKViewDelegate, CLLocationManagerDeleg
         {
             let labelNode = SKLabelNode(text: postAnchor.content)
             labelNode.numberOfLines = 0
-            labelNode.preferredMaxLayoutWidth = 250
+            labelNode.preferredMaxLayoutWidth = 500
             labelNode.lineBreakMode = .byWordWrapping
             labelNode.horizontalAlignmentMode = .center
             labelNode.verticalAlignmentMode = .center
+            labelNode.fontColor = .black
+            labelNode.fontName = "Minecraftia"
+            labelNode.fontSize = 12
             return labelNode
         }
         
-        return SKLabelNode(text: "Hello World!")
+        let bubbleNode = SKSpriteNode(imageNamed: "bubble.png")
+        bubbleNode.setScale(100)
+        return bubbleNode
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
@@ -117,5 +138,8 @@ class ViewController: UIViewController, ARSKViewDelegate, CLLocationManagerDeleg
             view.addSubview(inView)
             inView.startAnimating()
         }
+    }
+    
+    @IBAction func updateStatus(_ sender: Any) {
     }
 }

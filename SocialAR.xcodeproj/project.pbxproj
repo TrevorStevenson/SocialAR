@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B9F39591F91FF5D009451B2 /* Minecraftia-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B9F39581F91F2F8009451B2 /* Minecraftia-Regular.ttf */; };
 		3BA4CC011F919B7600705CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4CC001F919B7600705CD7 /* AppDelegate.swift */; };
 		3BA4CC031F919B7600705CD7 /* Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3BA4CC021F919B7600705CD7 /* Scene.sks */; };
 		3BA4CC051F919B7600705CD7 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4CC041F919B7600705CD7 /* Scene.swift */; };
@@ -46,6 +47,7 @@
 		25E85EB4A28DA31EF063FC62 /* Pods-SocialAR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialAR.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocialAR/Pods-SocialAR.release.xcconfig"; sourceTree = "<group>"; };
 		2EA8581C7CEAC707C1426C57 /* Pods-SocialARUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialARUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocialARUITests/Pods-SocialARUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2F428C4DFFEC1CB29ED6C186 /* Pods-SocialARTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialARTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocialARTests/Pods-SocialARTests.release.xcconfig"; sourceTree = "<group>"; };
+		3B9F39581F91F2F8009451B2 /* Minecraftia-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Minecraftia-Regular.ttf"; sourceTree = "<group>"; };
 		3BA4CBFD1F919B7600705CD7 /* SocialAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BA4CC001F919B7600705CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BA4CC021F919B7600705CD7 /* Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Scene.sks; sourceTree = "<group>"; };
@@ -139,9 +141,6 @@
 		3BA4CBFF1F919B7600705CD7 /* SocialAR */ = {
 			isa = PBXGroup;
 			children = (
-				3BA4CC321F919CAE00705CD7 /* SocialAR.entitlements */,
-				3BA4CC001F919B7600705CD7 /* AppDelegate.swift */,
-				3BA4CC021F919B7600705CD7 /* Scene.sks */,
 				3BA4CC041F919B7600705CD7 /* Scene.swift */,
 				3BA4CC061F919B7600705CD7 /* ViewController.swift */,
 				3BA4CC471F91CC4000705CD7 /* LocationManager.swift */,
@@ -152,6 +151,10 @@
 				3BA4CC0B1F919B7600705CD7 /* Assets.xcassets */,
 				3BA4CC0D1F919B7600705CD7 /* LaunchScreen.storyboard */,
 				3BA4CC101F919B7600705CD7 /* Info.plist */,
+				3BA4CC321F919CAE00705CD7 /* SocialAR.entitlements */,
+				3BA4CC021F919B7600705CD7 /* Scene.sks */,
+				3BA4CC001F919B7600705CD7 /* AppDelegate.swift */,
+				3B9F39581F91F2F8009451B2 /* Minecraftia-Regular.ttf */,
 			);
 			path = SocialAR;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B9F39591F91FF5D009451B2 /* Minecraftia-Regular.ttf in Resources */,
 				3BA4CC031F919B7600705CD7 /* Scene.sks in Resources */,
 				3BA4CC0F1F919B7600705CD7 /* LaunchScreen.storyboard in Resources */,
 				3BA4CC0C1F919B7600705CD7 /* Assets.xcassets in Resources */,

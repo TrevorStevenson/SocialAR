@@ -8,6 +8,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Minecraftia-Regular.ttf">
+            <string>Minecraftia-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -24,7 +29,7 @@
                                 </connections>
                             </arskView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lO7-6g-IF5">
-                                <rect key="frame" x="147" y="617" width="80" height="30"/>
+                                <rect key="frame" x="20" y="617" width="80" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Show Posts">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -33,20 +38,41 @@
                                     <action selector="showPosts:" destination="BV1-FR-VrT" eventType="touchUpInside" id="GTe-P9-BvF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1g-ed-PlH">
+                                <rect key="frame" x="324" y="617" width="31" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Post">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="updateStatus:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Moq-yM-sqX"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to SocialAR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIT-c1-cdw">
+                                <rect key="frame" x="47" y="149" width="282" height="51"/>
+                                <fontDescription key="fontDescription" name="Minecraftia-Regular" family="Minecraftia" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="LiO-E4-v0c" firstAttribute="leading" secondItem="s0V-Pn-OSf" secondAttribute="leading" id="1qQ-iy-ViU"/>
                             <constraint firstItem="LiO-E4-v0c" firstAttribute="bottom" secondItem="s0V-Pn-OSf" secondAttribute="bottom" id="B1S-2M-brh"/>
-                            <constraint firstItem="lO7-6g-IF5" firstAttribute="centerX" secondItem="LiO-E4-v0c" secondAttribute="centerX" id="BRa-Ce-kAF"/>
+                            <constraint firstItem="lO7-6g-IF5" firstAttribute="leading" secondItem="s0V-Pn-OSf" secondAttribute="leading" constant="20" id="HhJ-rB-zmt"/>
+                            <constraint firstItem="s0V-Pn-OSf" firstAttribute="bottom" secondItem="W1g-ed-PlH" secondAttribute="bottom" constant="20" id="Jsl-N9-cy6"/>
                             <constraint firstItem="LiO-E4-v0c" firstAttribute="top" secondItem="PUU-cd-8Jn" secondAttribute="top" id="Mnd-Tn-uzB"/>
+                            <constraint firstItem="gIT-c1-cdw" firstAttribute="centerX" secondItem="LiO-E4-v0c" secondAttribute="centerX" id="N9i-U4-Moj"/>
                             <constraint firstItem="LiO-E4-v0c" firstAttribute="trailing" secondItem="s0V-Pn-OSf" secondAttribute="trailing" id="WM5-1u-ARH"/>
+                            <constraint firstItem="LiO-E4-v0c" firstAttribute="top" secondItem="gIT-c1-cdw" secondAttribute="bottom" constant="-200" id="ZyL-vl-GZp"/>
                             <constraint firstItem="lO7-6g-IF5" firstAttribute="bottom" secondItem="LiO-E4-v0c" secondAttribute="bottom" constant="-20" id="mmV-gL-DPa"/>
+                            <constraint firstItem="s0V-Pn-OSf" firstAttribute="trailing" secondItem="W1g-ed-PlH" secondAttribute="trailing" constant="20" id="se6-bp-OhB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="s0V-Pn-OSf"/>
                     </view>
                     <connections>
                         <outlet property="sceneView" destination="LiO-E4-v0c" id="xxO-u7-223"/>
+                        <outlet property="titleLabel" destination="gIT-c1-cdw" id="f2G-QS-qPx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>

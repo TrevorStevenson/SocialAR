@@ -33,7 +33,7 @@ class Scene: SKScene {
             let transform = simd_mul(currentFrame.camera.transform, translation)
             
             // Add a new anchor to the session
-            let anchor = ARAnchor(transform: transform)
+            //let anchor = ARAnchor(transform: transform)
             //sceneView.session.add(anchor: anchor)
         }
     }
