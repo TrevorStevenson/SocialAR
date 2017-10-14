@@ -9,8 +9,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Minecraftia-Regular.ttf">
-            <string>Minecraftia-Regular</string>
+        <array key="Avenir.ttc">
+            <string>Avenir-Book</string>
         </array>
     </customFonts>
     <scenes>
@@ -29,9 +29,12 @@
                                 </connections>
                             </arskView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lO7-6g-IF5">
-                                <rect key="frame" x="20" y="617" width="80" height="30"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Show Posts">
+                                <rect key="frame" x="20" y="547" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Ot9-Ok-hW7"/>
+                                    <constraint firstAttribute="width" constant="100" id="zb9-oK-fpz"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="showButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -39,9 +42,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1g-ed-PlH">
-                                <rect key="frame" x="324" y="617" width="31" height="30"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Post">
+                                <rect key="frame" x="255" y="547" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="A0h-TY-6xa"/>
+                                    <constraint firstAttribute="width" constant="100" id="hbH-3A-0ih"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="postButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -49,22 +55,47 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to SocialAR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIT-c1-cdw">
-                                <rect key="frame" x="47" y="149" width="282" height="51"/>
-                                <fontDescription key="fontDescription" name="Minecraftia-Regular" family="Minecraftia" pointSize="24"/>
+                                <rect key="frame" x="34.5" y="156" width="307.5" height="44"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ape-vy-rOc">
+                                <rect key="frame" x="67" y="269" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="2bT-N5-43Y"/>
+                                    <constraint firstAttribute="width" constant="240" id="s53-fQ-q3P"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pH-Rr-eOq">
+                                <rect key="frame" x="87" y="405" width="200" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="aov-MF-43t"/>
+                                    <constraint firstAttribute="height" constant="60" id="xV4-5q-jRT"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="sendButton"/>
+                                <connections>
+                                    <action selector="submitPost:" destination="BV1-FR-VrT" eventType="touchUpInside" id="sFa-qF-xXr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="LiO-E4-v0c" firstAttribute="leading" secondItem="s0V-Pn-OSf" secondAttribute="leading" id="1qQ-iy-ViU"/>
+                            <constraint firstItem="Ape-vy-rOc" firstAttribute="centerY" secondItem="LiO-E4-v0c" secondAttribute="centerY" id="7pd-nU-ebU"/>
+                            <constraint firstItem="Ape-vy-rOc" firstAttribute="centerX" secondItem="LiO-E4-v0c" secondAttribute="centerX" id="AoF-jI-oSB"/>
                             <constraint firstItem="LiO-E4-v0c" firstAttribute="bottom" secondItem="s0V-Pn-OSf" secondAttribute="bottom" id="B1S-2M-brh"/>
                             <constraint firstItem="lO7-6g-IF5" firstAttribute="leading" secondItem="s0V-Pn-OSf" secondAttribute="leading" constant="20" id="HhJ-rB-zmt"/>
+                            <constraint firstItem="2pH-Rr-eOq" firstAttribute="centerX" secondItem="Ape-vy-rOc" secondAttribute="centerX" id="HuR-Ky-twz"/>
                             <constraint firstItem="s0V-Pn-OSf" firstAttribute="bottom" secondItem="W1g-ed-PlH" secondAttribute="bottom" constant="20" id="Jsl-N9-cy6"/>
                             <constraint firstItem="LiO-E4-v0c" firstAttribute="top" secondItem="PUU-cd-8Jn" secondAttribute="top" id="Mnd-Tn-uzB"/>
                             <constraint firstItem="gIT-c1-cdw" firstAttribute="centerX" secondItem="LiO-E4-v0c" secondAttribute="centerX" id="N9i-U4-Moj"/>
                             <constraint firstItem="LiO-E4-v0c" firstAttribute="trailing" secondItem="s0V-Pn-OSf" secondAttribute="trailing" id="WM5-1u-ARH"/>
                             <constraint firstItem="LiO-E4-v0c" firstAttribute="top" secondItem="gIT-c1-cdw" secondAttribute="bottom" constant="-200" id="ZyL-vl-GZp"/>
+                            <constraint firstItem="2pH-Rr-eOq" firstAttribute="top" secondItem="Ape-vy-rOc" secondAttribute="bottom" constant="8" id="hwS-ZA-uET"/>
                             <constraint firstItem="lO7-6g-IF5" firstAttribute="bottom" secondItem="LiO-E4-v0c" secondAttribute="bottom" constant="-20" id="mmV-gL-DPa"/>
                             <constraint firstItem="s0V-Pn-OSf" firstAttribute="trailing" secondItem="W1g-ed-PlH" secondAttribute="trailing" constant="20" id="se6-bp-OhB"/>
                         </constraints>
@@ -72,6 +103,8 @@
                     </view>
                     <connections>
                         <outlet property="sceneView" destination="LiO-E4-v0c" id="xxO-u7-223"/>
+                        <outlet property="submitPost" destination="2pH-Rr-eOq" id="p4X-W1-XMr"/>
+                        <outlet property="textView" destination="Ape-vy-rOc" id="9h1-cX-B2r"/>
                         <outlet property="titleLabel" destination="gIT-c1-cdw" id="f2G-QS-qPx"/>
                     </connections>
                 </viewController>
@@ -80,4 +113,9 @@
             <point key="canvasLocation" x="24.800000000000001" y="31.934032983508249"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="postButton" width="300" height="300"/>
+        <image name="sendButton" width="714" height="198"/>
+        <image name="showButton" width="300" height="300"/>
+    </resources>
 </document>

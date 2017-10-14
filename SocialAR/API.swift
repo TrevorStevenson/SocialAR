@@ -18,13 +18,13 @@ func postStatus(status: String, username : String, location: CLLocation)
     Alamofire.request(requestUrl, method: .post, parameters: parameters, encoding: JSONEncoding.default)
 }
 
-func getNearbyPosts(currentLocation: CLLocation, completion: @escaping ([String : Any]) -> Void)
+func getNearbyPosts(currentLocation: CLLocation, completion: @escaping ([Any]) -> Void)
 {
     let requestUrl = "https://secure-river-29415.herokuapp.com/\(currentLocation.coordinate.latitude)/\(currentLocation.coordinate.longitude)"
     
     Alamofire.request(requestUrl, method: .get, parameters: nil, encoding: JSONEncoding.default).responseJSON { (response) in
         
-        completion(response.result.value as! [String : Any])
+        completion(response.result.value as! [Any])
 
     }
 }

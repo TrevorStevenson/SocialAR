@@ -11,12 +11,12 @@ import ARKit
 
 class PostAnchor: ARAnchor {
     
-    var content: String?
+    var content: UIImage?
     
-    init(status: String, transform: matrix_float4x4)
+    init(image: UIImage, transform: matrix_float4x4)
     {
         super.init(transform: transform)
-        content = status
+        content = image
     }
 
 }

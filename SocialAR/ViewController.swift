@@ -18,13 +18,18 @@ class ViewController: UIViewController, ARSKViewDelegate, CLLocationManagerDeleg
     var currentLocation: CLLocation?
     var indicatorView: UIActivityIndicatorView?
     var indicatorBG: UIView?
+    var postContent: String?
     
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var textView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         titleLabel.alpha = 0.0
+        textView.alpha = 0.0
+        textView.layer.cornerRadius = 10.0
+        textView.layer.masksToBounds = true
         
         UIView.animate(withDuration: 5.0, animations: {
             
@@ -61,7 +66,7 @@ class ViewController: UIViewController, ARSKViewDelegate, CLLocationManagerDeleg
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
-        configuration.worldAlignment = .gravityAndHeading
+        configuration.worldAlignment = .gravity
         
         // Run the view's session
         sceneView.session.run(configuration)
@@ -85,16 +90,8 @@ class ViewController: UIViewController, ARSKViewDelegate, CLLocationManagerDeleg
         // Create and configure a node for the anchor added to the view's session.
         if let postAnchor = anchor as? PostAnchor
         {
-            let labelNode = SKLabelNode(text: postAnchor.content)
-            labelNode.numberOfLines = 0
-            labelNode.preferredMaxLayoutWidth = 500
-            labelNode.lineBreakMode = .byWordWrapping
-            labelNode.horizontalAlignmentMode = .center
-            labelNode.verticalAlignmentMode = .center
-            labelNode.fontColor = .black
-            labelNode.fontName = "Minecraftia"
-            labelNode.fontSize = 12
-            return labelNode
+            let bubbleNode = SKSpriteNode(texture: SKTexture(image: postAnchor.content!))
+            return bubbleNode
         }
         
         let bubbleNode = SKSpriteNode(imageNamed: "bubble.png")
@@ -115,6 +112,23 @@ class ViewController: UIViewController, ARSKViewDelegate, CLLocationManagerDeleg
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
+    }
+    
+    func scale(view: UIView, from: Float, to: Float, withDuration duration: TimeInterval, repeatCount: Float, autoreverses: Bool)
+    {
+        let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
+        scaleAnimation.fromValue = from
+        scaleAnimation.toValue = to
+        scaleAnimation.duration = duration
+        scaleAnimation.repeatCount = repeatCount
+        scaleAnimation.autoreverses = autoreverses
+        view.layer.add(scaleAnimation, forKey: nil)
+    }
+    
+    func scaleUp(view: UIView, withDuration duration: TimeInterval, to: Float = 1.25, completion: () -> Void = {})
+    {
+        scale(view: view, from: 1.0, to: to, withDuration: duration, repeatCount: 1, autoreverses: true)
+        completion()
     }
     
     @IBAction func showPosts(_ sender: Any)
@@ -140,6 +154,17 @@ class ViewController: UIViewController, ARSKViewDelegate, CLLocationManagerDeleg
         }
     }
     
-    @IBAction func updateStatus(_ sender: Any) {
+    @IBAction func updateStatus(_ sender: Any)
+    {
+        textView.alpha = 1.0
+        scaleUp(view: textView, withDuration: 0.25)
+        textView.becomeFirstResponder()
+    }
+    
+    @IBAction func submitPost(_ sender: Any)
+    {
+        postContent = textView.text
+        locationManager.requestLocation()
     }
 }
+

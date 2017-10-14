@@ -14,25 +14,38 @@ extension ViewController
 {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
+        if let content = postContent
+        {
+            postStatus(status: content, username: "tstevenson", location: locations[0])
+            postContent = nil
+            return
+        }
+
+        // Create a session configuration
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.worldAlignment = .gravity
+        
+        // Run the view's session
+        sceneView.session.run(configuration)
+        
         getNearbyPosts(currentLocation: locations[0]) { (json) in
             
-            var translation = matrix_identity_float4x4
-            
-            translation.columns.3.z = -0.1 * (Float(arc4random_uniform(16)) + 15)
-            let transform = simd_mul((self.sceneView.session.currentFrame?.camera.transform)!, translation)
-            
             // Add a new anchor to the session
-            if let posts = json["posts"] as? [Any]
+            for item in json
             {
-                for item in posts
+                if let post = item as? [Any]
                 {
-                    if let dict = item as? [String : Any]
-                    {
-                        let textAnchor = PostAnchor(status: dict["textpost"] as! String, transform: transform)
-                        let bubbleAnchor = ARAnchor(transform: transform)
-                        self.sceneView.session.add(anchor: textAnchor)
-                        self.sceneView.session.add(anchor: bubbleAnchor)
-                    }
+                    let anchorPos = distanceAndBearing(point1: locations[0], point2: CLLocation(latitude: post[0] as! CLLocationDegrees, longitude: post[1] as! CLLocationDegrees))
+                    var translation = matrix_identity_float4x4
+                    translation.columns.3.y = 1.0 * (Float(arc4random_uniform(5)) - 2)
+                    translation.columns.3.z = -1.0 * Float(anchorPos.distance)
+                    
+                    let transform = simd_mul((self.sceneView.session.currentFrame?.camera.transform)!, translation)
+                    
+                    let decodedData = Data(base64Encoded: post[2] as! String, options: Data.Base64DecodingOptions.ignoreUnknownCharacters)
+
+                    let textAnchor = PostAnchor(image: UIImage(data: decodedData!)!, transform: transform)
+                    self.sceneView.session.add(anchor: textAnchor)
                 }
             }
             
