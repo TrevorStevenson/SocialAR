@@ -9,6 +9,7 @@
 import UIKit
 import SpriteKit
 import ARKit
+import CoreLocation
 
 class ViewController: UIViewController, ARSKViewDelegate {
     
@@ -28,6 +29,9 @@ class ViewController: UIViewController, ARSKViewDelegate {
         if let scene = SKScene(fileNamed: "Scene") {
             sceneView.presentScene(scene)
         }
+        
+        let loc = CLLocation(latitude: 12.04, longitude: 12.943)
+        apiPost(currentLocation: loc)
     }
     
     override func viewWillAppear(_ animated: Bool) {

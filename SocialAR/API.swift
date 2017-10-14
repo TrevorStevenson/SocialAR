@@ -7,8 +7,12 @@
 //
 
 import Foundation
+import Alamofire
+import CoreLocation
 
-class API
+func updateStatus(status: String, username : String, location: CLLocation)
 {
-    
+    let requestUrl = "https://secure-river-29415.herokuapp.com/addNewLocation/\(location.coordinate.latitude)/\(location.coordinate.longitude)"
+    let parameters: Parameters = ["username" : username, "textpost" : status]
+    Alamofire.request(requestUrl, method: .post, parameters: parameters, encoding: JSONEncoding.default)
 }
