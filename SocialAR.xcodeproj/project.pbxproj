@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3B9F39591F91FF5D009451B2 /* Minecraftia-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B9F39581F91F2F8009451B2 /* Minecraftia-Regular.ttf */; };
+		3B9F395B1F92D5C0009451B2 /* JobAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9F395A1F92D5C0009451B2 /* JobAnchor.swift */; };
+		3B9F395D1F92D963009451B2 /* ARViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9F395C1F92D963009451B2 /* ARViewDelegate.swift */; };
+		3B9F395F1F92DF49009451B2 /* JobPopOver.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9F395E1F92DF49009451B2 /* JobPopOver.xib */; };
+		3B9F39611F92DFD9009451B2 /* JobPopOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9F39601F92DFD9009451B2 /* JobPopOverView.swift */; };
 		3BA4CC011F919B7600705CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4CC001F919B7600705CD7 /* AppDelegate.swift */; };
 		3BA4CC031F919B7600705CD7 /* Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3BA4CC021F919B7600705CD7 /* Scene.sks */; };
 		3BA4CC051F919B7600705CD7 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4CC041F919B7600705CD7 /* Scene.swift */; };
@@ -48,6 +52,10 @@
 		2EA8581C7CEAC707C1426C57 /* Pods-SocialARUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialARUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocialARUITests/Pods-SocialARUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2F428C4DFFEC1CB29ED6C186 /* Pods-SocialARTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialARTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocialARTests/Pods-SocialARTests.release.xcconfig"; sourceTree = "<group>"; };
 		3B9F39581F91F2F8009451B2 /* Minecraftia-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Minecraftia-Regular.ttf"; sourceTree = "<group>"; };
+		3B9F395A1F92D5C0009451B2 /* JobAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobAnchor.swift; sourceTree = "<group>"; };
+		3B9F395C1F92D963009451B2 /* ARViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewDelegate.swift; sourceTree = "<group>"; };
+		3B9F395E1F92DF49009451B2 /* JobPopOver.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = JobPopOver.xib; path = SocialAR/JobPopOver.xib; sourceTree = SOURCE_ROOT; };
+		3B9F39601F92DFD9009451B2 /* JobPopOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobPopOverView.swift; sourceTree = "<group>"; };
 		3BA4CBFD1F919B7600705CD7 /* SocialAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BA4CC001F919B7600705CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BA4CC021F919B7600705CD7 /* Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Scene.sks; sourceTree = "<group>"; };
@@ -142,12 +150,16 @@
 			isa = PBXGroup;
 			children = (
 				3BA4CC041F919B7600705CD7 /* Scene.swift */,
+				3B9F395C1F92D963009451B2 /* ARViewDelegate.swift */,
 				3BA4CC061F919B7600705CD7 /* ViewController.swift */,
 				3BA4CC471F91CC4000705CD7 /* LocationManager.swift */,
 				3BA4CC351F91AAD700705CD7 /* Math.swift */,
 				3BA4CC371F91AD8D00705CD7 /* API.swift */,
 				3BA4CC451F91BCFD00705CD7 /* PostAnchor.swift */,
+				3B9F395A1F92D5C0009451B2 /* JobAnchor.swift */,
+				3B9F39601F92DFD9009451B2 /* JobPopOverView.swift */,
 				3BA4CC081F919B7600705CD7 /* Main.storyboard */,
+				3B9F395E1F92DF49009451B2 /* JobPopOver.xib */,
 				3BA4CC0B1F919B7600705CD7 /* Assets.xcassets */,
 				3BA4CC0D1F919B7600705CD7 /* LaunchScreen.storyboard */,
 				3BA4CC101F919B7600705CD7 /* Info.plist */,
@@ -316,6 +328,7 @@
 				3BA4CC0F1F919B7600705CD7 /* LaunchScreen.storyboard in Resources */,
 				3BA4CC0C1F919B7600705CD7 /* Assets.xcassets in Resources */,
 				3BA4CC0A1F919B7600705CD7 /* Main.storyboard in Resources */,
+				3B9F395F1F92DF49009451B2 /* JobPopOver.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,10 +491,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B9F395B1F92D5C0009451B2 /* JobAnchor.swift in Sources */,
 				3BA4CC071F919B7600705CD7 /* ViewController.swift in Sources */,
 				3BA4CC051F919B7600705CD7 /* Scene.swift in Sources */,
 				3BA4CC461F91BCFD00705CD7 /* PostAnchor.swift in Sources */,
+				3B9F395D1F92D963009451B2 /* ARViewDelegate.swift in Sources */,
 				3BA4CC481F91CC4000705CD7 /* LocationManager.swift in Sources */,
+				3B9F39611F92DFD9009451B2 /* JobPopOverView.swift in Sources */,
 				3BA4CC011F919B7600705CD7 /* AppDelegate.swift in Sources */,
 				3BA4CC361F91AAD700705CD7 /* Math.swift in Sources */,
 				3BA4CC381F91AD8D00705CD7 /* API.swift in Sources */,

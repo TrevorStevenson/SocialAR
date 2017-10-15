@@ -19,6 +19,7 @@ class ViewController: UIViewController, ARSKViewDelegate, CLLocationManagerDeleg
     var indicatorView: UIActivityIndicatorView?
     var indicatorBG: UIView?
     var postContent: String?
+    static var topView: UIView?
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
@@ -26,6 +27,8 @@ class ViewController: UIViewController, ARSKViewDelegate, CLLocationManagerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ViewController.topView = view
         
         titleLabel.alpha = 0.0
         textView.alpha = 0.0
@@ -53,7 +56,8 @@ class ViewController: UIViewController, ARSKViewDelegate, CLLocationManagerDeleg
         sceneView.showsNodeCount = true
         
         // Load the SKScene from 'Scene.sks'
-        if let scene = SKScene(fileNamed: "Scene") {
+        if let scene = SKScene(fileNamed: "Scene")
+        {
             sceneView.presentScene(scene)
         }
         
@@ -94,6 +98,14 @@ class ViewController: UIViewController, ARSKViewDelegate, CLLocationManagerDeleg
         {
             let bubbleNode = SKSpriteNode(texture: SKTexture(image: postAnchor.content!))
             return bubbleNode
+        }
+        
+        if let jobAnchor = anchor as? JobAnchor
+        {
+            let jobNode = SKSpriteNode(texture: SKTexture(image: jobAnchor.img))
+            jobNode.name = "\(jobAnchor.content![0])(.)(.)\(jobAnchor.content![1])(.)(.)\(jobAnchor.content![2])"
+            print(jobNode.name)
+            return jobNode
         }
         
         let bubbleNode = SKSpriteNode(imageNamed: "bubble.png")
@@ -171,6 +183,27 @@ class ViewController: UIViewController, ARSKViewDelegate, CLLocationManagerDeleg
         textView.text = ""
         sendButton.alpha = 0.0
         textView.alpha = 0.0
+        textView.resignFirstResponder()
     }
+}
+
+extension ViewController
+{
+    class func showJobPopover(name: String?)
+    {
+        print(name)
+        let popView = JobPopOverView(frame: (topView?.bounds.insetBy(dx: 150, dy: 150))!)
+        let items = name?.components(separatedBy: "(.)(.)")
+        popView.nameLabel?.text = items?[0]
+        popView.titleLabel?.text = items?[1]
+        popView.urlLabel?.text = items?[2]
+        
+        if name != nil
+        {
+            topView!.addSubview(popView)
+
+        }
+    }
+    
 }
 

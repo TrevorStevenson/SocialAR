@@ -43,8 +43,8 @@ extension ViewController
                     var translation = matrix_identity_float4x4
                     translation.columns.3.z = Float(anchorPos.distance) * -1
                     
-                    let rotation = GLKMatrix4RotateY(GLKMatrix4Identity, Float(anchorPos.bearing) * 1)
-                    let sRotation = matrix_float4x4.init(float4.init(rotation.m00, rotation.m10, rotation.m20, rotation.m30), float4.init(rotation.m01, rotation.m11, rotation.m21, rotation.m31), float4.init(rotation.m02, rotation.m12, rotation.m22, rotation.m32), float4.init(rotation.m03, rotation.m13, rotation.m23, rotation.m33))
+                    let rotation = GLKMatrix4RotateY(GLKMatrix4Identity, Float(anchorPos.bearing) * -1)
+                    let sRotation = matrix_float4x4.init(float4.init(rotation.m00, rotation.m01, rotation.m02, rotation.m03), float4.init(rotation.m10, rotation.m11, rotation.m12, rotation.m13), float4.init(rotation.m20, rotation.m21, rotation.m22, rotation.m23), float4.init(rotation.m30, rotation.m31, rotation.m32, rotation.m33))
                     
                     let transform = simd_mul(sRotation, translation)
                     
@@ -57,6 +57,25 @@ extension ViewController
             
             self.indicatorView?.stopAnimating()
             self.indicatorBG?.removeFromSuperview()
+        }
+        
+        getJobs(currentLocation: locations[0]) { (json) in
+            
+            for item in json
+            {
+                if let dict = item as? [String : Any]
+                {
+                    var translation = matrix_identity_float4x4
+                    translation.columns.3.z = -1 * Float(arc4random_uniform(6)) + 5
+                    translation.columns.3.x = Float(arc4random_uniform(7)) - 3
+                    
+                    let decodedData = Data(base64Encoded: dict["image"] as! String, options: Data.Base64DecodingOptions.ignoreUnknownCharacters)
+                    
+                    let jobAnchor = JobAnchor(data: [dict["company"] as! String, dict["jobTitle"] as! String, dict["url"] as! String], image: UIImage(data: decodedData!)!, transform: translation)
+                    self.sceneView.session.add(anchor: jobAnchor)
+                }
+            }
+            
         }
     }
     
