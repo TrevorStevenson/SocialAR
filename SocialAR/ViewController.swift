@@ -24,6 +24,7 @@ class ViewController: UIViewController, ARSKViewDelegate, CLLocationManagerDeleg
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var exitButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,7 @@ class ViewController: UIViewController, ARSKViewDelegate, CLLocationManagerDeleg
         titleLabel.alpha = 0.0
         textView.alpha = 0.0
         sendButton.alpha = 0.0
+        exitButton.alpha = 0.0
         textView.layer.cornerRadius = 10.0
         textView.layer.masksToBounds = true
         
@@ -104,7 +106,6 @@ class ViewController: UIViewController, ARSKViewDelegate, CLLocationManagerDeleg
         {
             let jobNode = SKSpriteNode(texture: SKTexture(image: jobAnchor.img))
             jobNode.name = "\(jobAnchor.content![0])(.)(.)\(jobAnchor.content![1])(.)(.)\(jobAnchor.content![2])"
-            print(jobNode.name)
             return jobNode
         }
         
@@ -172,6 +173,7 @@ class ViewController: UIViewController, ARSKViewDelegate, CLLocationManagerDeleg
     {
         textView.alpha = 1.0
         sendButton.alpha = 1.0
+        exitButton.alpha = 1.0
         scaleUp(view: textView, withDuration: 0.25)
         textView.becomeFirstResponder()
     }
@@ -184,6 +186,14 @@ class ViewController: UIViewController, ARSKViewDelegate, CLLocationManagerDeleg
         sendButton.alpha = 0.0
         textView.alpha = 0.0
         textView.resignFirstResponder()
+        exitButton.alpha = 0.0
+    }
+    
+    @IBAction func exit(_ sender: Any) {
+        sendButton.alpha = 0.0
+        textView.resignFirstResponder()
+        textView.alpha = 0.0
+        exitButton.alpha = 0.0
     }
 }
 
@@ -191,17 +201,14 @@ extension ViewController
 {
     class func showJobPopover(name: String?)
     {
-        print(name)
         let popView = JobPopOverView(frame: (topView?.bounds.insetBy(dx: 150, dy: 150))!)
         let items = name?.components(separatedBy: "(.)(.)")
         popView.nameLabel?.text = items?[0]
         popView.titleLabel?.text = items?[1]
-        popView.urlLabel?.text = items?[2]
-        
+        popView.urlLabel = items?[2]
         if name != nil
         {
             topView!.addSubview(popView)
-
         }
     }
     

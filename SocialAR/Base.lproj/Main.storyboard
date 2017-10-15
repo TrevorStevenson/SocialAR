@@ -54,8 +54,8 @@
                                     <action selector="updateStatus:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Moq-yM-sqX"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to SocialAR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIT-c1-cdw">
-                                <rect key="frame" x="34.5" y="156" width="307.5" height="44"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to ArrivAR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIT-c1-cdw">
+                                <rect key="frame" x="43.5" y="156" width="289.5" height="44"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -81,6 +81,17 @@
                                     <action selector="submitPost:" destination="BV1-FR-VrT" eventType="touchUpInside" id="sFa-qF-xXr"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KA7-sc-KK1">
+                                <rect key="frame" x="67" y="231" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="cFT-3w-YsZ"/>
+                                    <constraint firstAttribute="height" constant="30" id="wFs-Wc-BgW"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="ExitButton"/>
+                                <connections>
+                                    <action selector="exit:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Lcr-nc-y7w"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -88,6 +99,7 @@
                             <constraint firstItem="Ape-vy-rOc" firstAttribute="centerY" secondItem="LiO-E4-v0c" secondAttribute="centerY" id="7pd-nU-ebU"/>
                             <constraint firstItem="Ape-vy-rOc" firstAttribute="centerX" secondItem="LiO-E4-v0c" secondAttribute="centerX" id="AoF-jI-oSB"/>
                             <constraint firstItem="LiO-E4-v0c" firstAttribute="bottom" secondItem="s0V-Pn-OSf" secondAttribute="bottom" id="B1S-2M-brh"/>
+                            <constraint firstItem="Ape-vy-rOc" firstAttribute="top" secondItem="KA7-sc-KK1" secondAttribute="bottom" constant="8" id="C5d-AS-s9f"/>
                             <constraint firstItem="lO7-6g-IF5" firstAttribute="leading" secondItem="s0V-Pn-OSf" secondAttribute="leading" constant="20" id="HhJ-rB-zmt"/>
                             <constraint firstItem="2pH-Rr-eOq" firstAttribute="centerX" secondItem="Ape-vy-rOc" secondAttribute="centerX" id="HuR-Ky-twz"/>
                             <constraint firstItem="s0V-Pn-OSf" firstAttribute="bottom" secondItem="W1g-ed-PlH" secondAttribute="bottom" constant="20" id="Jsl-N9-cy6"/>
@@ -97,11 +109,13 @@
                             <constraint firstItem="LiO-E4-v0c" firstAttribute="top" secondItem="gIT-c1-cdw" secondAttribute="bottom" constant="-200" id="ZyL-vl-GZp"/>
                             <constraint firstItem="2pH-Rr-eOq" firstAttribute="top" secondItem="Ape-vy-rOc" secondAttribute="bottom" constant="20" id="hwS-ZA-uET"/>
                             <constraint firstItem="lO7-6g-IF5" firstAttribute="bottom" secondItem="LiO-E4-v0c" secondAttribute="bottom" constant="-20" id="mmV-gL-DPa"/>
+                            <constraint firstItem="KA7-sc-KK1" firstAttribute="leading" secondItem="Ape-vy-rOc" secondAttribute="leading" id="ood-wy-pYd"/>
                             <constraint firstItem="s0V-Pn-OSf" firstAttribute="trailing" secondItem="W1g-ed-PlH" secondAttribute="trailing" constant="20" id="se6-bp-OhB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="s0V-Pn-OSf"/>
                     </view>
                     <connections>
+                        <outlet property="exitButton" destination="KA7-sc-KK1" id="EmY-7L-Ml6"/>
                         <outlet property="sceneView" destination="LiO-E4-v0c" id="xxO-u7-223"/>
                         <outlet property="sendButton" destination="2pH-Rr-eOq" id="2xY-76-cjl"/>
                         <outlet property="textView" destination="Ape-vy-rOc" id="9h1-cX-B2r"/>
@@ -114,6 +128,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ExitButton" width="150" height="150"/>
         <image name="postButton" width="300" height="300"/>
         <image name="sendButton" width="714" height="198"/>
         <image name="showButton" width="300" height="300"/>
